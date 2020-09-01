@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Heart Disease Detection Using ML & DL</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Heart Attack Detection</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link navbar-brand" href="index.html">HOME<span class="sr-only">(current)</span></a>
+      </li>  
+ </div>
+ </nav>
+</header>
+ <div>
+      <div class="container">
+      <div class="col-lg-8 m-auto d-block">
+    <form action="{{ url_for('predict')}}" method="POST" class="bg-light">
+    <fieldset>
+      <legend class="text-center">Please fill in the Details</legend>
+      <div>
+      <div class="form-group">
+        <label>Age:</label>
+        <input type="text" name="age" placeholder="age" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+      <label>Sex:</label>
+        <input type="text" name="sex" placeholder="sex" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label>Cp:</label>
+        <input type="text" name="cp" placeholder="cp" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label>Trestbps:</label>
+        <input type="text" name="trestbps" placeholder="trestbps" class="form-control" required="required">
+      </div>
+     <div class="form-group">
+        <label>Chol:</label>
+        <input type="text" name="chol" placeholder="chol" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label>Thalach:</label>
+        <input type="text" name="thalach" placeholder="thalach" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label>Exang:</label>
+        <input type="text" name="exang" placeholder="exang" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label>Oldpeak:</label>
+        <input type="text" name="oldpeak" placeholder="oldpeak" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label>Slope:</label>
+        <input type="text" name="slope" placeholder="slope" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label>CA:</label>
+        <input type="text" name="ca" placeholder="ca" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label>Thal:</label>
+        <input type="text" name="thal" placeholder="thal" class="form-control" required="required">
+      </div>
+      <button type="submit" class="btn-large waves-effect waves-light orange btn btn-success">Predict Heart Disease</button>
+      </div>
+    </fieldset>
+  </form>
+ </div> 
+  <center>
+    <h1>{{ prediction_text }}</h1>
+  </center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
