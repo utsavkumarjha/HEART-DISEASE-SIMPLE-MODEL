@@ -1,31 +1,28 @@
-import numpy as np
-import pandas as pd
-from flask import Flask, request, render_template
+from flask import Flask,request, url_for, redirect, render_template
 import pickle
+import numpy as np
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl','rb'))
-
+model=pickle.load(open('model.pkl','rb'))
 
 @app.route('/')
-def home():
-    return render_template('trytwo.html')
+def hello_world():
+    return render_template("trytwo.html")
 
 @app.route('/predict',methods=['POST','GET'])
 def predict():
-    input_features = [float(x) for x in request.form.values()]
-    features_value = [np.array(input_features)]
-    
-    features_name =  ["age","sex", "cp", "trestbps", "chol", "thalach", "exang",
-                    "oldpeak", "slope", "ca", "thal"]
-    df2 = pd.DataFrame(features_value, columns=features_name)
-    output = model.predict(df2)
-    
-    if output == 1:
-        res_val = "**Heart Disease**"
+    # receive the values send by user in three text boxes thru request object -> requesst.form.values()
+    int_features=[float(x) for x in request.form.values()]
+    final=[np.array(int_features)]
+    print(int_features)
+    print(final)
+    prediction=model.predict_proba(final)
+    output='{0:.{1}f}'.format(prediction[0][1], 2)
+
+    if output>str(0.5):
+        return render_template('trytwo.html',pred='Your have heart disease.Take good care of yourself.your probability of having heart disease is {}'.format(output))
     else:
-        res_val = "No Heart Disease"
-        
-    return render_template('trytwo.html', prediction_text='Patient has {}'.format(res_val))
-if __name__ == "__main__":
-    app.run()
+        return render_template('trytwo.html',pred='Your do not have heart disease.However,you need to take care of yourself.Your probability of having heart disease is {}'.format(output))
+
+if __name__ == '__main__':
+      app.run(debug=False)
