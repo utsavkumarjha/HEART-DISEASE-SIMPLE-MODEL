@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Heart Disease Detection Using ML & DL</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Heart Disease Prediction</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+      </li> 
+     </ul>
+ </div>
+ </nav>
+</header>
+ <div>
+      <div class="container">
+      <div class="col-lg-8 m-auto d-block">
+    <form action="{{ url_for('predict')}}" method="POST" class="bg-light">
+    <fieldset>
+      <legend class="text-center">Note:Probability will be in the range 0.00-1.00,where 0.5 and above depicts high risk</legend>
+        <br>
+        <legend class="text-center">Please fill in the Details</legend>
+      <div>
+      <div class="form-group">
+        <label>Age:</label>
+        <input type="text" name="age" placeholder="age" class="form-control" required="required">
+      </div>
+          
+          <div class="form-group">
+         <label for ="sex"> Sex </label>
+          <select name="sex" id="sex" class="form-control" required="required">
+           <option value="0">Female</option>
+           <option value="1">Male</option>
+          </select>
+       </div>
+          <div class="form-group">
+        <label for ="cp"> Chest Pain </label>
+          <select name="cp" id="cp" class="form-control" required="required">
+          <option value="0">Typical Angina</option>
+          <option value="1">Atypical angina</option>
+          <option value="2">Non-anginal pain</option>
+          <option value="3"> Asymptomatic</option>
+          </select>
+        </div>         
+      <div class="form-group">
+        <label>Resting Blood Pressure(in mm Hg on admission to the hospital)</label>
+        <input type="text" name="trestbps"  class="form-control" required="required">
+      </div>
+     <div class="form-group">
+        <label>Serum cholestoral in mg/dl serum</label>
+        <input type="text" name="chol" class="form-control" required="required">
+      </div>
+
+      <div class="form-group">
+        <label>Maximum Heart Rate Achieved</label>
+        <input type="text" name="thalach" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label for="exang"> Exercise Induced Angina?</label>
+          <select name="exang" id="exang" placeholder="exercise induced angina" class="form-control" required="required">
+          <option value="0">exercise induced angina-NOPE</option>
+          <option value="1">exercise induced angina-YES</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label>ST depression induced by exercise relative to rest</label>
+        <input type="text" name="oldpeak" placeholder="oldpeak" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label for="slope">The slope of the peak exercise ST segment:</label>
+          <select name="slope" id="slope" placeholder="the slope of the peak exercise ST segment" class="form-control" required="required">
+          <option value="0">0: Upsloping: better heart rate with excercise (uncommon)</option>
+          <option value="1">1: Flatsloping: minimal change (typical healthy heart) </option>
+           <option value="2">2: Downslopins: signs of unhealthy heart </option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="ca">Number of major vessels (0-3) colored by flourosopy:</label>
+        <select name="ca" id="ca " placeholder="cardiac vessels" class="form-control" required="required">
+          <option value="0">number of major vessels - 0</option>
+          <option value="1">number of major vessels - 1 </option>
+           <option value="2">number of major vessels - 2 </option>
+            <option value="3">number of major vessels - 3 </option>
+            <option value="4">number of major vessels - 4 </option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="Thal">thalium stress result:</label>
+          <select name="thal" id="thal" placeholder="thalium stress result" class="form-control" required="required">
+              <option value="1"> normal  </option>
+           <option value="2">fixed defect </option>
+            <option value="3">7: Reversable Defect:no proper blood movement when excercising</option>
+          </select>
+      </div>
+      <button type="submit" class="btn-large waves-effect waves-light orange btn btn-success">Predict Heart Disease</button>
+      </div>
+    </fieldset>
+  </form>
+ </div> 
+  <center>
+    <h1>{{ pred }}</h1>
+  </center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
