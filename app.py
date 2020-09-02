@@ -7,7 +7,7 @@ model=pickle.load(open('model.pkl','rb'))
 
 @app.route('/')
 def hello_world():
-    return render_template("trytwo.html")
+    return render_template("utsav19.html")
 
 @app.route('/predict',methods=['POST','GET'])
 def predict():
@@ -20,9 +20,9 @@ def predict():
     output='{0:.{1}f}'.format(prediction[0][1], 2)
 
     if output>str(0.5):
-        return render_template('trytwo.html',pred='Your have heart disease.Take good care of yourself.your probability of having heart disease is {}'.format(output))
+        return render_template('utsav19.html',pred='Your have heart disease.Take good care of yourself.Your probability of having heart disease is {}'.format(output))
     else:
-        return render_template('trytwo.html',pred='Your do not have heart disease.However,you need to take care of yourself.Your probability of having heart disease is {}'.format(output))
+        return render_template('utsav19.html',pred='Your do not have heart disease. Eat healthy,stay healthy. Your probability of having heart disease is {}'.format(output))
 
 if __name__ == '__main__':
       app.run(debug=False)
