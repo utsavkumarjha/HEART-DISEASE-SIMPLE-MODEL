@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Heart Disease Detection by utsav Using Machine Learning</title>
+	<title>Heart Disease Detection Using ML & DL</title>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -23,11 +23,11 @@
  </nav>
 </header>
  <div>
+     <h2>Note:Probability will be in the range 0.00-1.00,where 0.5 and above depicts high risk</h2>
       <div class="container">
       <div class="col-lg-8 m-auto d-block">
     <form action="{{ url_for('predict')}}" method="POST" class="bg-light">
     <fieldset>
-      <legend class="text-center">Note:Probability will be in the range 0.00-1.00,where 0.5 and above depicts high risk</legend>
         <br>
         <legend class="text-center">Please fill in the Details</legend>
       <div>
@@ -39,6 +39,7 @@
           <div class="form-group">
          <label for ="sex"> Sex </label>
           <select name="sex" id="sex" class="form-control" required="required">
+               <option  disabled="disabled" selected="selected"> Select your gender</option>
            <option value="0">Female</option>
            <option value="1">Male</option>
           </select>
@@ -46,6 +47,7 @@
           <div class="form-group">
         <label for ="cp"> Chest Pain </label>
           <select name="cp" id="cp" class="form-control" required="required">
+          <option value="" disabled="disabled" selected="selected"> Choose chest pain type</option>
           <option value="0">Typical Angina</option>
           <option value="1">Atypical angina</option>
           <option value="2">Non-anginal pain</option>
@@ -68,6 +70,7 @@
       <div class="form-group">
         <label for="exang"> Exercise Induced Angina?</label>
           <select name="exang" id="exang" placeholder="exercise induced angina" class="form-control" required="required">
+           <option value="" disabled="disabled" selected="selected"> choose one</option>
           <option value="0">exercise induced angina-NOPE</option>
           <option value="1">exercise induced angina-YES</option>
           </select>
@@ -79,6 +82,7 @@
       <div class="form-group">
         <label for="slope">The slope of the peak exercise ST segment:</label>
           <select name="slope" id="slope" placeholder="the slope of the peak exercise ST segment" class="form-control" required="required">
+              <option value="" disabled="disabled" selected="selected"> Choose  a slope</option>
           <option value="0">0: Upsloping: better heart rate with excercise (uncommon)</option>
           <option value="1">1: Flatsloping: minimal change (typical healthy heart) </option>
            <option value="2">2: Downslopins: signs of unhealthy heart </option>
@@ -99,7 +103,7 @@
           <select name="thal" id="thal" placeholder="thalium stress result" class="form-control" required="required">
               <option value="1"> normal  </option>
            <option value="2">fixed defect </option>
-            <option value="3">Reversable Defect:no proper blood movement when excercising</option>
+            <option value="3"> Reversable Defect:no proper blood movement when excercising</option>
           </select>
       </div>
       <button type="submit" class="btn-large waves-effect waves-light orange btn btn-success">Predict Heart Disease</button>
@@ -110,6 +114,17 @@
   <center>
     <h1>{{ pred }}</h1>
   </center>
+          <center>
+    <div class="footer">
+        <p class="footer-bottom-text">Designed by &copy; Utsav Kumar Jha </p>
+           <br>
+        <br>
+        <p class="footer-bottom-text">Reach me through </p>
+      <a style="color:darkbrown" href="https://www.linkedin.com/in/utsav-kumar-jha-8085b0180/"> Linkedin\</a>
+      <a style="color:red" href="https://www.instagram.com/utsav_kumar_jha/?hl=en">\Instagram \</a>
+      <a style="color:darkblue" href="https://www.facebook.com/utsav.man.79"> Facebook</a>
+        <br>   <br>
+ </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
