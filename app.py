@@ -20,9 +20,9 @@ def predict():
     output='{0:.{1}f}'.format(prediction[0][1], 2)
 
     if output>str(0.5):
-        return render_template('utsav19.html',pred='Your have heart disease.Take good care of yourself.Your probability of having heart disease is {}'.format(output))
+        return render_template('utsav19.html',pred='You have heart disease.Your probability of having heart disease is {}'.format(output))
     else:
-        return render_template('utsav19.html',pred='Your do not have heart disease. Eat healthy,stay healthy. Your probability of having heart disease is {}'.format(output))
+        return render_template('utsav19.html',pred='You do not have heart disease.Your probability of having heart disease is {}'.format(output))
 
 if __name__ == '__main__':
       app.run(debug=False)
